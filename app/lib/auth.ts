@@ -20,6 +20,7 @@ export const authOptions: NextAuthOptions = {
           });
 
           return response.data;
+        // eslint-disable-next-line @typescript-eslint/no-unused-vars
         } catch (error) {
           return null;
         }
@@ -37,8 +38,8 @@ export const authOptions: NextAuthOptions = {
       return token;
     },
     async session({ session, token }) {
-      if (token) {
-        session?.user?.id = token?.id;
+      if (token && session.user) {
+        session.user.email = token?.email;
       }
       return session;
     },

@@ -1,4 +1,5 @@
-export async function GET(req) {
+/* eslint-disable @typescript-eslint/no-unused-vars */
+export async function GET(req: { url: string | URL; }) {
     try {
       // Fetch data from the external API
       const response = await fetch('https://test.catalystegy.com/public/api/properties');
@@ -6,7 +7,6 @@ export async function GET(req) {
   
       console.log("Fetched Data:", data); // Log the raw data here to inspect the structure
   
-      // Process the data to handle the image URLs
   
       // Extract pagination parameters from the query string
       const { searchParams } = new URL(req.url);

@@ -1,6 +1,5 @@
 import NextAuth, { NextAuthOptions } from "next-auth";
 import CredentialsProvider from "next-auth/providers/credentials";
-import { api } from "../../lib/api";
 import axios from "axios";
 
 const BASE_URL = 'https://test.catalystegy.com/public/api';
@@ -25,6 +24,7 @@ export const authOptions: NextAuthOptions = {
 
           return response.data;
         } catch (error) {
+          console.log(error)
           return null;
         }
       },
@@ -41,8 +41,8 @@ export const authOptions: NextAuthOptions = {
       return token;
     },
     async session({ session, token }) {
-      if (token) {
-        session?.user?.id = token?.id;
+      if (session.user) {
+        session.user.email = token?.email;
       }
       return session;
     },
