@@ -3,19 +3,20 @@ import { MapContainer, TileLayer, Marker, Popup } from 'react-leaflet';
 import 'leaflet/dist/leaflet.css';
 
 
-import markerIcon from "leaflet/dist/images/marker-icon.png";
-import markerShadow from "leaflet/dist/images/marker-shadow.png";
+// import Image from 'next/image';
+import markerIconPath from 'leaflet/dist/images/marker-icon.png';
+import markerShadowPath from 'leaflet/dist/images/marker-shadow.png';
 import L from 'leaflet';
 
-// Set custom marker icon
 const customIcon = L.icon({
-  iconUrl: markerIcon,
-  shadowUrl: markerShadow,
+  iconUrl: markerIconPath.src, // Access the URL from StaticImageData
+  shadowUrl: markerShadowPath.src, // Access the URL from StaticImageData
   iconSize: [25, 41],
   iconAnchor: [12, 41],
   popupAnchor: [1, -34],
   shadowSize: [41, 41],
 });
+
 
 const MapComponent = () => {
   return (
