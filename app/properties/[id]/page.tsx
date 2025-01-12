@@ -1,34 +1,28 @@
-import dynamic from "next/dynamic";
+import PropertyGallery from "@/app/_components/PropertyGallery";
+import PropertyInfo from "@/app/_components/PropertyInfo";
+import ReservationFormWrapper from "@/app/_components/ReservationFormWrapper";
 
-// Dynamically import components with SSR disabled if needed (e.g., if they rely on window or other client-side APIs)
-const PropertyGallery = dynamic(() => import("@/app/_components/PropertyGallery"), { ssr: false });
-const PropertyInfo = dynamic(() => import("@/app/_components/PropertyInfo"), { ssr: false });
-const ReservationFormWrapper = dynamic(() => import("@/app/_components/ReservationFormWrapper"), { ssr: false });
+
 
 // Mock properties data (in a real app, this would come from an API/database)
-const properties = [
-  {
-    id: "1",
-    title: "Luxury Villa with Ocean View",
-    location: "Malibu, California",
-    price: 850,
-    rating: 4.98,
-  },
-  {
-    id: "2",
-    title: "Modern Downtown Loft",
-    location: "New York City, New York",
-    price: 450,
-    rating: 4.85,
-  },
-];
+// const properties = [
+//   {
+//     id: "1",
+//     title: "Luxury Villa with Ocean View",
+//     location: "Malibu, California",
+//     price: 850,
+//     rating: 4.98,
+//   },
+//   {
+//     id: "2",
+//     title: "Modern Downtown Loft",
+//     location: "New York City, New York",
+//     price: 450,
+//     rating: 4.85,
+//   },
+// ];
 
 // Required for static export
-export function generateStaticParams() {
-  return properties.map((property) => ({
-    id: property.id,
-  }));
-}
 
 const PropertyDetails = () => {
 
@@ -37,7 +31,6 @@ const PropertyDetails = () => {
   // }, []);
 
   // Don't render the page until the client-side code has been initialized
-  if (!isClient) return null;
 
 
   return (
