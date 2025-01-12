@@ -18,7 +18,7 @@ const signupSchema = z.object({
   path: ["confirmPassword"],
 });
 
-export default function SignupPage() {
+const SignupPage = ()=> {
   const router = useRouter();
   const [error, setError] = useState('');
   const { register, handleSubmit, formState: { errors, isSubmitting } } = useForm({
@@ -112,3 +112,5 @@ export default function SignupPage() {
     </div>
   );
 }
+
+export default SignupPage;

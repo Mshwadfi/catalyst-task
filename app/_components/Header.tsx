@@ -1,8 +1,12 @@
+"use client"
 import Link from 'next/link';
 import { Search, Menu, Globe } from 'lucide-react';
 import Logo from './Logo';
+import UserDropDown from './UserDropDown';
+import { useState } from 'react';
 
-export default function Header() {
+const Header = ()=> {
+  const [isMenuOpen, setIsMenuOpen] = useState(false);
   return (
     <header className="sticky top-0 z-50 bg-white shadow-sm">
       <div className=" px-16 py-4">
@@ -24,7 +28,9 @@ export default function Header() {
             <div className="hover:bg-gray-100 p-2 rounded-full cursor-pointer">
               <Globe size={20} />
             </div>
-            <div className="flex items-center space-x-2 border rounded-full p-2 cursor-pointer hover:shadow-md">
+            <div className="flex items-center space-x-2 border relative rounded-full p-2 cursor-pointer hover:shadow-md"
+            onMouseEnter={()=>setIsMenuOpen(true)}
+            onMouseLeave={()=>setIsMenuOpen(false)}>
               <Menu size={20} />
               <div className="bg-gray-500 rounded-full p-2">
                 <div className="text-white">
@@ -33,6 +39,7 @@ export default function Header() {
                   </svg>
                 </div>
               </div>
+            {isMenuOpen && <UserDropDown />}
             </div>
           </div>
         </div>
@@ -40,3 +47,4 @@ export default function Header() {
     </header>
   );
 }
+export default Header;

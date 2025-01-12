@@ -4,32 +4,71 @@ import { useState } from 'react';
 import { useForm } from 'react-hook-form';
 import { zodResolver } from '@hookform/resolvers/zod';
 import * as z from 'zod';
-import { useRouter } from 'next/navigation';
-// import { createProperty } from '@/lib/api';
+import { createProperty } from '../lib/api';
+
+
+const mockUser = {
+  id: 303,
+  name: 'Leon Pollich',
+  email: 'leannon.georgianna@example.org',
+  phone: '646-543-1479',
+  role: 'client',
+  profile_image: 'https://bio3.catalyst.com.eg/public/Catalyst_portfolio/IMG_0997%20(1).jpg',
+  intro_video: 'https://bio3.catalyst.com.eg/public/Catalyst_portfolio/techtest.mp4',
+  created_at: '2025-01-07T20:41:31.000000Z',
+  updated_at: '2025-01-07T20:41:31.000000Z',
+};
 
 const propertySchema = z.object({
-  title: z.string().min(5),
+  name: z.string().min(5),
   description: z.string().min(20),
   location: z.string().min(5),
   price: z.number().min(1),
   bedrooms: z.number().min(1),
   bathrooms: z.number().min(1),
   maxGuests: z.number().min(1),
-  images: z.array(z.instanceof(File)).min(1), // Accepts an array of File objects
+  images: z
+      .any()
+      .refine((value) => value instanceof FileList, {
+        message: "Please upload valid images.",
+      })
+      .transform((value) => Array.from(value)), // Accepts an array of File objects
   amenities: z.string(),
 });
 
 export default function HostPage() {
-  const router = useRouter();
   const [error, setError] = useState('');
   const { register, handleSubmit, formState: { errors, isSubmitting } } = useForm({
     resolver: zodResolver(propertySchema),
   });
 
   const onSubmit = async (data: any) => {
-    // Handle the form submission, including uploading images if necessary
-    console.log('Form Data:', data);
+    try {
+      const formData = new FormData();
+      
+      // Append text fields to FormData
+      formData.append('user_id', "333");
+      formData.append('name', data?.name);
+      formData.append('description', data.description);
+      formData.append('price', data.price.toString());
+      formData.append('location', data.location);
+      formData.append('images', JSON.stringify(data.images.map((file: File) => file.name)));
+      formData.append('bedrooms', data.bedrooms.toString());
+      formData.append('bathrooms', data.bathrooms.toString());
+      formData.append('maxGuests', data.maxGuests.toString());
+      formData.append('amenities', data.amenities);
+      formData.append('user', JSON.stringify(mockUser));
+    
+      const response = await createProperty(formData);
+  
+      // console.log('Property created successfully:', response.data);
+      alert('Property created successfully!');
+    } catch (error) {
+      // console.error('Error creating property:', error);
+      setError('Failed to create property. Please try again.');
+    }
   };
+  
 
   return (
     <div className="container mx-auto px-4 py-8">
@@ -43,11 +82,11 @@ export default function HostPage() {
             <label className="block text-sm font-medium mb-1">Property Title</label>
             <input
               placeholder="Cozy beachfront apartment"
-              {...register('title')}
+              {...register('name')}
               className="w-full px-4 py-2 border rounded-lg focus:outline-none focus:ring-2 focus:ring-rose-500"
             />
-            {errors.title && (
-              <p className="text-red-500 text-sm mt-1">{errors.title.message as string}</p>
+            {errors.name && (
+              <p className="text-red-500 text-sm mt-1">{errors?.name?.message as string}</p>
             )}
           </div>
 

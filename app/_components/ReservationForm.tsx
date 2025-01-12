@@ -12,7 +12,7 @@ interface ReservationFormProps {
   onDateChange: (date: { from: Date; to: Date | undefined }) => void;
 }
 
-export default function ReservationForm({ date, onDateChange }: ReservationFormProps) {
+const ReservationForm = ({ date, onDateChange }: ReservationFormProps)=> {
   const [isCalendarOpen, setIsCalendarOpen] = useState(false);
 
   return (
@@ -56,7 +56,7 @@ export default function ReservationForm({ date, onDateChange }: ReservationFormP
               <h4 className="font-semibold">Select your dates</h4>
               <p className="text-sm text-neutral-500">Add your travel dates for exact pricing</p>
             </div>
-            {/* Simple calendar UI - in a real app, you'd want a more sophisticated calendar component */}
+            {/* calender */}
             <div className="grid grid-cols-7 gap-1">
               {Array.from({ length: 31 }, (_, i) => (
                 <button
@@ -103,3 +103,5 @@ export default function ReservationForm({ date, onDateChange }: ReservationFormP
     </div>
   );
 }
+
+export default ReservationForm;

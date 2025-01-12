@@ -13,7 +13,7 @@ const PropertyInfo = () => {
   const [coordinates, setCoordinates] = useState<LatLngExpression>([lat, long]);
 
   const handleLocationClick = () => {
-    setShowMap(true);
+    setShowMap(!showMap);
     setCoordinates([64.0259, 118.7798]);
   };
 
@@ -44,7 +44,6 @@ const PropertyInfo = () => {
 
       {showMap && (
         <div className="mt-4">
-          {/* <h3 className="text-xl font-semibold">Location</h3> */}
           <MapComponent />
         </div>
       )}

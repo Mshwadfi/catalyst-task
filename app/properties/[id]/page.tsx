@@ -28,7 +28,6 @@ export function generateStaticParams() {
 }
 
 const PropertyDetails = () => {
-  const property = properties[0]; // Example to use the first property
 
   return (
     <div className="min-h-screen">

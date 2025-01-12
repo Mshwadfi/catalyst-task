@@ -13,13 +13,13 @@ const categories = [
   { label: "Boats", icon: Ship },
 ];
 
-export default function CategoryFilter({
+const CategoryFilter = ({
   selectedCategory,
   onSelectCategory,
 }: {
   selectedCategory: string;
   onSelectCategory: (category: string) => void;
-}) {
+})=> {
   return (
     <div className="pt-24 pb-6 overflow-x-auto">
       <div className="flex items-center justify-center gap-2 p-1 min-w-max overflow-hidden">
@@ -45,3 +45,5 @@ export default function CategoryFilter({
     </div>
   );
 }
+
+export default CategoryFilter;

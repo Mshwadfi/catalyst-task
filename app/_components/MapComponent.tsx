@@ -7,7 +7,7 @@ import markerIcon from "leaflet/dist/images/marker-icon.png";
 import markerShadow from "leaflet/dist/images/marker-shadow.png";
 import L from 'leaflet';
 
-// Set custom marker icon
+//custom marker icon
 const customIcon = L.icon({
   iconUrl: markerIcon,
   shadowUrl: markerShadow,
@@ -19,12 +19,12 @@ const customIcon = L.icon({
 
 const MapComponent = () => {
   return (
-    <div className="w-full">
+    <div className="w-full -z-10">
       <h2 className="text-xl font-bold">Location</h2>
       <MapContainer
         center={[51.505, -0.09]}
         zoom={13}
-        className="leaflet-map-container" // Applied CSS
+        className="leaflet-map-container" 
         scrollWheelZoom={false}
       >
         <TileLayer
