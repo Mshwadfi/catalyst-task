@@ -35,9 +35,9 @@ export function generateStaticParams() {
 const PropertyDetails = () => {
   const [isClient, setIsClient] = useState(false);
 
-  useEffect(() => {
-    setIsClient(true);
-  }, []);
+  // useEffect(() => {
+  //   setIsClient(true);
+  // }, []);
 
   // Don't render the page until the client-side code has been initialized
   if (!isClient) return null;
