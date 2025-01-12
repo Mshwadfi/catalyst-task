@@ -1,4 +1,3 @@
-import { useEffect, useState } from "react";
 import dynamic from "next/dynamic";
 
 // Dynamically import components with SSR disabled if needed (e.g., if they rely on window or other client-side APIs)
@@ -32,7 +31,6 @@ export function generateStaticParams() {
 }
 
 const PropertyDetails = () => {
-  const [isClient, setIsClient] = useState(false);
 
   // useEffect(() => {
   //   setIsClient(true);
