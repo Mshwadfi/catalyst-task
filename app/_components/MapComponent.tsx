@@ -8,10 +8,7 @@ import markerIconPath from 'leaflet/dist/images/marker-icon.png';
 import markerShadowPath from 'leaflet/dist/images/marker-shadow.png';
 import L from 'leaflet';
 
-<<<<<<< HEAD
-=======
 //custom marker icon
->>>>>>> temp-branch
 const customIcon = L.icon({
   iconUrl: markerIconPath.src, // Access the URL from StaticImageData
   shadowUrl: markerShadowPath.src, // Access the URL from StaticImageData

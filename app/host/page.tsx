@@ -4,10 +4,8 @@ import { useState } from 'react';
 import { useForm } from 'react-hook-form';
 import { zodResolver } from '@hookform/resolvers/zod';
 import * as z from 'zod';
-<<<<<<< HEAD
-// import { createProperty } from '@/lib/api';
-=======
 import { createProperty } from '../lib/api';
+// import { createProperty } from '@/lib/api';
 
 
 const mockUser = {
@@ -21,7 +19,6 @@ const mockUser = {
   created_at: '2025-01-07T20:41:31.000000Z',
   updated_at: '2025-01-07T20:41:31.000000Z',
 };
->>>>>>> temp-branch
 
 const propertySchema = z.object({
   name: z.string().min(5),
@@ -41,10 +38,8 @@ const propertySchema = z.object({
 });
 
 export default function HostPage() {
-<<<<<<< HEAD
   // eslint-disable-next-line @typescript-eslint/no-unused-vars
-=======
->>>>>>> temp-branch
+
   const [error, setError] = useState('');
   const { register, handleSubmit, formState: { errors, isSubmitting } } = useForm({
     resolver: zodResolver(propertySchema),
