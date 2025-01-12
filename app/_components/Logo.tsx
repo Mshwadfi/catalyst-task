@@ -1,7 +1,7 @@
 import Image from "next/image";
 import Link from "next/link";
 
-export default function Logo() {
+const Logo = ()=> {
   return (
     <Link href="/" className="flex items-center text-rose-500 text-2xl font-bold">
       <Image src="/logo.png" alt="Airbnb Logo" width={40} height={40} />
@@ -10,3 +10,5 @@ export default function Logo() {
     </Link>
   );
 }
+
+export default Logo;

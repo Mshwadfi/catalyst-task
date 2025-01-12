@@ -8,6 +8,10 @@ import markerIconPath from 'leaflet/dist/images/marker-icon.png';
 import markerShadowPath from 'leaflet/dist/images/marker-shadow.png';
 import L from 'leaflet';
 
+<<<<<<< HEAD
+=======
+//custom marker icon
+>>>>>>> temp-branch
 const customIcon = L.icon({
   iconUrl: markerIconPath.src, // Access the URL from StaticImageData
   shadowUrl: markerShadowPath.src, // Access the URL from StaticImageData
@@ -20,12 +24,12 @@ const customIcon = L.icon({
 
 const MapComponent = () => {
   return (
-    <div className="w-full">
+    <div className="w-full -z-10">
       <h2 className="text-xl font-bold">Location</h2>
       <MapContainer
         center={[51.505, -0.09]}
         zoom={13}
-        className="leaflet-map-container" // Applied CSS
+        className="leaflet-map-container" 
         scrollWheelZoom={false}
       >
         <TileLayer

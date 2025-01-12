@@ -1,7 +1,7 @@
 /* eslint-disable @typescript-eslint/no-explicit-any */
 import axios from 'axios';
 
-const BASE_URL = 'https://test.catalystegy.com/public/api';
+const BASE_URL = 'https://test.catalystegy.com/api';
 
 export const api = axios.create({
   baseURL: BASE_URL,

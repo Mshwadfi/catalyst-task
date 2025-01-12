@@ -13,6 +13,7 @@ export default function Home() {
   return (
     <>
       <div className="container mx-auto flex flex-wrap justify-start gap-6 px-8 sm:px-14">
+<<<<<<< HEAD
         <CategoryFilter
           selectedCategory={selectedCategory}
           onSelectCategory={handleSelectCategory}
@@ -21,6 +22,11 @@ export default function Home() {
         <ImageCarousel images={images} />
         <ImageCarousel images={images} />
         <ImageCarousel images={images} /> */}
+=======
+      <CategoryFilter selectedCategory={""} onSelectCategory={function (category: string): void {
+          throw new Error("Function not implemented.");
+        } } />
+>>>>>>> temp-branch
         <PropertyList />
       </div>
     </>

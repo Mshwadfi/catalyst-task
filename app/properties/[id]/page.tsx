@@ -33,6 +33,7 @@ export function generateStaticParams() {
 }
 
 const PropertyDetails = () => {
+<<<<<<< HEAD
   const [isClient, setIsClient] = useState(false);
 
   useEffect(() => {
@@ -41,6 +42,8 @@ const PropertyDetails = () => {
 
   // Don't render the page until the client-side code has been initialized
   if (!isClient) return null;
+=======
+>>>>>>> temp-branch
 
   return (
     <div className="min-h-screen">

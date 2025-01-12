@@ -51,7 +51,6 @@ const PropertyList = () => {
           ))}
       </div>
 
-      {/* Show More Button */}
       {page * limit < total && (
         <button
           onClick={handleShowMore}
