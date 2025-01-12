@@ -38,7 +38,6 @@ const propertySchema = z.object({
 });
 
 export default function HostPage() {
-  // eslint-disable-next-line @typescript-eslint/no-unused-vars
 
   const [error, setError] = useState('');
   const { register, handleSubmit, formState: { errors, isSubmitting } } = useForm({
@@ -64,11 +63,11 @@ export default function HostPage() {
       formData.append('user', JSON.stringify(mockUser));
     
       const response = await createProperty(formData);
-  
+      console.log(response)
       // console.log('Property created successfully:', response.data);
       alert('Property created successfully!');
     } catch (error) {
-      // console.error('Error creating property:', error);
+      console.error('Error creating property:', error);
       setError('Failed to create property. Please try again.');
     }
   };
